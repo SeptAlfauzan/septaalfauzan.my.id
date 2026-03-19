@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "pinia": "^3.0.4",
+    "terminal.css": "^0.7.5",
     "vue": "^3.5.29",
     "vue-router": "^5.0.3"
   },
