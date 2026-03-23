@@ -17,6 +17,7 @@ Currently working with international clients and shipping apps to Play Store & A
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/experiences">Experiences</RouterLink>
+        <RouterLink to="/skills">Skills</RouterLink>
       </nav>
     </div>
   </header>
