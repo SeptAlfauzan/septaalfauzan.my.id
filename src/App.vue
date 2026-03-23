@@ -18,8 +18,11 @@ Currently working with international clients and shipping apps to Play Store & A
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/experiences">Experiences</RouterLink>
         <RouterLink to="/skills">Skills</RouterLink>
+        <RouterLink to="/contacts">Contacts</RouterLink>
       </nav>
     </div>
   </header>
-<RouterView/>
+  <div style="margin-top: 32px;">
+    <RouterView/>
+  </div>
 </template>

@@ -8,11 +8,18 @@
 }
 
 header {
-  position: sticky;
   top: 0;
   z-index: 10;
   /* background: var(--color-background); */
   padding-block: 2rem;
+  background: white;
+  margin-bottom: 32px !important;
+  margin-right: 32px !important;
+}
+
+nav{
+  top: 0;
+  position: sticky;
 }
 
 .wrapper {

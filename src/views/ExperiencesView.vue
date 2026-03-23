@@ -6,6 +6,7 @@ import TheWelcome from '../components/TheWelcome.vue'
 <template>
   <main>
   <div class="container">
+    <h2>My Experiences so far</h2>
       <div class="terminal-timeline">
 
   <div class="terminal-card">
