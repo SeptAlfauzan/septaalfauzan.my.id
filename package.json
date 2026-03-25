@@ -19,6 +19,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "gsap": "^3.14.2",
     "pinia": "^3.0.4",
     "terminal.css": "^0.7.5",
     "vue": "^3.5.29",

@@ -8,7 +8,6 @@ import TheWelcome from '../components/TheWelcome.vue'
   <div class="container">
     <div class="terminal-card">
       <div>
-        <p>This is inside a terminal-style card.</p>
         <ProfilePic/>
       </div>
     </div>
