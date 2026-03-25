@@ -1,7 +1,7 @@
 <template>
   <img
     class="profile-pic"
-    src="https://img.freepik.com/free-photo/portrait-beautiful-purebred-pussycat-with-shorthair-orange-collar-neck-sitting-floor-reacting-camera-flash-scared-looking-light-indoor_8353-12551.jpg?semt=ais_hybrid&w=740&q=80"
+    src="https://media.licdn.com/dms/image/v2/D5603AQEfOSr_CwSyow/profile-displayphoto-crop_800_800/B56ZgnxH1xHQAM-/0/1753013847014?e=1776297600&v=beta&t=kRpmLmspJr3dxdy1_PEW8XmcgyfZ7qsIXw9Nax6kKk4"
     alt="profile-pic"
   />
 </template>
