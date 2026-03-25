@@ -1,21 +1,87 @@
 @import './base.css';
 
+@keyframes gridFade1 {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes gridFade2 {
+  0%, 100% { opacity: 0.5; }
+  33% { opacity: 0.2; }
+  66% { opacity: 0.8; }
+}
+
+@keyframes gridFade3 {
+  0%, 100% { opacity: 0.4; }
+  25% { opacity: 0.9; }
+  75% { opacity: 0.1; }
+}
+
+body{
+  position: relative;
+  height: 100%;
+  background-color: transparent;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body::before {
+  background-image: 
+    linear-gradient(0deg, transparent 10%, 
+            rgba(181, 222, 255, .2) 10%, rgba(181, 222, 255, .2) 12%, transparent 13%, transparent 29%, 
+            rgba(181, 222, 255, .1) 30%, rgba(181, 222, 255, .1) 31%, transparent 32%, transparent 49%, 
+            rgba(181, 222, 255, .1) 50%, rgba(181, 222, 255, .1) 51%, transparent 52%, transparent 69%, 
+            rgba(181, 222, 255, .1) 70%, rgba(181, 222, 255, .1) 71%, transparent 72%, transparent 89%,
+            rgba(181, 222, 255, .1) 90%, rgba(181, 222, 255, .1) 91%, transparent 92%, transparent),
+    linear-gradient(90deg, transparent 10%, 
+            rgba(181, 222, 255, .2) 10%, rgba(181, 222, 255, .2) 12%, transparent 13%, transparent 29%, 
+            rgba(181, 222, 255, .1) 30%, rgba(181, 222, 255, .1) 31%, transparent 32%, transparent 49%, 
+            rgba(181, 222, 255, .1) 50%, rgba(181, 222, 255, .1) 51%, transparent 52%, transparent 69%, 
+            rgba(181, 222, 255, .1) 70%, rgba(181, 222, 255, .1) 71%, transparent 72%, transparent 89%,
+            rgba(181, 222, 255, .1) 90%, rgba(181, 222, 255, .1) 91%, transparent 92%, transparent);
+  background-size: 80px 80px;
+  animation: gridFade1 8s ease-in-out infinite;
+}
+
+body::after {
+  background-image: 
+    linear-gradient(0deg, transparent 15%, 
+            rgba(100, 200, 255, .15) 15%, rgba(100, 200, 255, .15) 17%, transparent 18%, transparent 35%, 
+            rgba(100, 200, 255, .08) 35%, rgba(100, 200, 255, .08) 37%, transparent 38%, transparent 55%, 
+            rgba(100, 200, 255, .08) 55%, rgba(100, 200, 255, .08) 57%, transparent 58%, transparent 75%,
+            rgba(100, 200, 255, .08) 75%, rgba(100, 200, 255, .08) 77%, transparent 78%, transparent 95%,
+            rgba(100, 200, 255, .08) 95%, rgba(100, 200, 255, .08) 97%, transparent 98%, transparent),
+    linear-gradient(90deg, transparent 15%, 
+            rgba(100, 200, 255, .15) 15%, rgba(100, 200, 255, .15) 17%, transparent 18%, transparent 35%, 
+            rgba(100, 200, 255, .08) 35%, rgba(100, 200, 255, .08) 37%, transparent 38%, transparent 55%, 
+            rgba(100, 200, 255, .08) 55%, rgba(100, 200, 255, .08) 57%, transparent 58%, transparent 75%,
+            rgba(100, 200, 255, .08) 75%, rgba(100, 200, 255, .08) 77%, transparent 78%, transparent 95%,
+            rgba(100, 200, 255, .08) 95%, rgba(100, 200, 255, .08) 97%, transparent 98%, transparent);
+  background-size: 120px 120px;
+  animation: gridFade2 12s ease-in-out infinite 2s;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   gap: 32px;
   font-weight: normal;
+  font-size: 12px;
+  padding: 20px;
+
 }
 
-/* header {
-  padding-top: 32px !important;
-  z-index: 10;
-  padding-block: 2rem;
-  background: white;
-  margin-bottom: 32px !important;
-  margin-right: 32px !important;
-} */
 #router-content{
   margin-top: 64px;
 }
@@ -25,25 +91,50 @@
   padding: 12px;
 }
 
+.active-router{
+  background: #1a95e1;
+  color: white;
+}
+
+.terminal-prompt {
+  white-space: normal !important;
+  word-wrap: break-word;
+}
+
 #main-container{
   display: flex;
   gap: 32px;
 }
+.profile-pic {
+  width: 100%;         /* fill all available horizontal space */
+  height: auto;        /* keep aspect ratio */
+  object-fit: cover;   /* crop if the parent constrains height */
+  display: block;      /* removes inline gap */
+  flex: 1;             /* optional: makes it expand inside flex containers */
+  filter: grayscale(100%);
+}
+.profile-pic:hover{
+  filter: grayscale(0%);
+  transition: 1s;
+}
 
 nav{
+  /* background-color: white; */
   top: 0;
-  position: sticky;
+  position: sticky !important;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  z-index: 20;
 }
 
 .wrapper {
-  position: sticky !important;
   gap: 12px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
+
 
 .wrapper .btn{
   flex: 0 0 auto;

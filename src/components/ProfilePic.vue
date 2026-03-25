@@ -5,13 +5,3 @@
     alt="profile-pic"
   />
 </template>
-
-<style scoped>
-.profile-pic {
-  width: 100%;         /* fill all available horizontal space */
-  height: auto;        /* keep aspect ratio */
-  object-fit: cover;   /* crop if the parent constrains height */
-  display: block;      /* removes inline gap */
-  flex: 1;             /* optional: makes it expand inside flex containers */
-}
-</style>
