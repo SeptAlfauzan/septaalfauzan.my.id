@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
+    "preview": "bun run build-only && wrangler dev",
     "test:unit": "vitest",
     "prepare": "cypress install",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
@@ -16,14 +16,17 @@
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "deploy": "bun run build-only && wrangler deploy"
   },
   "dependencies": {
+    "@cloudflare/vite-plugin": "^1.30.1",
     "gsap": "^3.14.2",
     "pinia": "^3.0.4",
     "terminal.css": "^0.7.5",
     "vue": "^3.5.29",
-    "vue-router": "^5.0.3"
+    "vue-router": "^5.0.3",
+    "wrangler": "^4.77.0"
   },
   "devDependencies": {
     "@tsconfig/node24": "^24.0.4",
