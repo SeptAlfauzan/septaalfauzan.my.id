@@ -4,26 +4,50 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  gap: 32px;
   font-weight: normal;
 }
 
-header {
-  top: 0;
+/* header {
+  padding-top: 32px !important;
   z-index: 10;
-  /* background: var(--color-background); */
   padding-block: 2rem;
   background: white;
   margin-bottom: 32px !important;
   margin-right: 32px !important;
+} */
+#router-content{
+  margin-top: 64px;
+}
+
+#contacts-container{
+  border: 1px solid black;
+  padding: 12px;
+}
+
+#main-container{
+  display: flex;
+  gap: 32px;
 }
 
 nav{
   top: 0;
   position: sticky;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .wrapper {
   position: sticky !important;
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper .btn{
+  flex: 0 0 auto;
+  width: fit-content;
 }
 
 a,
