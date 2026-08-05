@@ -74,6 +74,7 @@ tl.to(".type-effect", {
         <RouterLink active-class="active-router"  to="/">/</RouterLink>
         <RouterLink active-class="active-router"  to="/about">About</RouterLink>
         <RouterLink  active-class="active-router" to="/experiences">Experiences</RouterLink>
+        <RouterLink active-class="active-router" to="/projects">Projects</RouterLink>
         <RouterLink active-class="active-router" to="/skills">Skills</RouterLink>
         <RouterLink  active-class="active-router" to="/contacts">Contacts</RouterLink>
       </nav>
