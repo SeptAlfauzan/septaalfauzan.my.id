@@ -171,8 +171,7 @@ Verification: `npm run type-check`, `npm run lint`, `npm run build`, `npm run te
 ## Dependencies Added
 
 - `marked`
-- `dompurify`
-- `@types/dompurify` (dev)
+- `dompurify` (v3+ ships its own TS types)
 
 ## Out of Scope
 
