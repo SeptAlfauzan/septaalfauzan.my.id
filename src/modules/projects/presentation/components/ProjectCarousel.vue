@@ -55,9 +55,9 @@ function prev() {
 .carousel-image {
   flex: 1;
   min-width: 0;
-  max-height: 420px;
+  height: clamp(240px, 45vh, 420px);
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .carousel-btn {
