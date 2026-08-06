@@ -7,6 +7,10 @@ const images = [
   { url: 'https://example.com/2.png', height: 100, width: 200 },
 ]
 
+const imgA = { url: 'https://example.com/a.png', height: 100, width: 200 }
+const imgB = { url: 'https://example.com/b.png', height: 100, width: 200 }
+const imgC = { url: 'https://example.com/c.png', height: 100, width: 200 }
+
 describe('ProjectCarousel', () => {
   it('shows the first image initially', () => {
     const wrapper = mount(ProjectCarousel, { props: { images, alt: 'Project' } })
@@ -32,5 +36,18 @@ describe('ProjectCarousel', () => {
 
     await buttons[0]!.trigger('click')
     expect(wrapper.find('img').attributes('src')).toBe(images[1]?.url)
+  })
+
+  it('resets the index when images change', async () => {
+    const wrapper = mount(ProjectCarousel, {
+      props: { images: [imgA, imgB, imgC], alt: 'Project' },
+    })
+    const buttons = wrapper.findAll('button')
+
+    await buttons[1]!.trigger('click')
+    expect(wrapper.text()).toContain('2 / 3')
+
+    await wrapper.setProps({ images: [imgA] })
+    expect(wrapper.text()).toContain('1 / 1')
   })
 })

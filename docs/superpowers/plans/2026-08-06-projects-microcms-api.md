@@ -124,11 +124,11 @@ git commit -m "feat: make MicroCMS HTTP data source the default"
 
 **Interfaces:**
 - Consumes: env vars `VITE_MICROCMS_ENDPOINT`, `VITE_MICROCMS_API_KEY` (from Task 1); types `ProjectDataSource`, `ProjectDto`, `ProjectsResponseDto` (existing)
-- Produces: same class `HttpProjectDataSource` with `fetchProjects(): Promise<ProjectsResponseDto>` and `fetchProjectById(id: string): Promise<ProjectDto | null>` — unchanged signatures, now with typed JSON + module-level env guard. Consumed by `di.ts` (Task 2).
+- Produces: same class `HttpProjectDataSource` with `fetchProjects(): Promise<ProjectsResponseDto>` and `fetchProjectById(id: string): Promise<ProjectDto | null>` — unchanged signatures, now with typed JSON + per-fetch env guard. Consumed by `di.ts` (Task 2).
 
 - [ ] **Step 1: Write the failing test**
 
-No new unit test (Approach B excludes data-source tests — see Global Constraints). The behavior change is verified by type-check (typed casts compile) and the dev run in the final verification task.
+A data-source unit test is now included (`src/modules/projects/data/http-data-source.spec.ts`): one asserts a clear error when env vars are missing, one asserts the MicroCMS auth header on the fetch call. The behavior change is also verified by type-check (typed casts compile) and the dev run in the final verification task.
 
 - [ ] **Step 2: Replace the whole file body**
 
@@ -138,27 +138,28 @@ Replace the entire contents of `src/modules/projects/data/http-data-source.ts`:
 import type { ProjectDataSource } from './project-data-source'
 import type { ProjectDto, ProjectsResponseDto } from './types'
 
-const ENDPOINT = import.meta.env.VITE_MICROCMS_ENDPOINT
-const API_KEY = import.meta.env.VITE_MICROCMS_API_KEY
-
-if (!ENDPOINT || !API_KEY) {
-  throw new Error(
-    'Missing MicroCMS configuration: VITE_MICROCMS_ENDPOINT and VITE_MICROCMS_API_KEY must be set',
-  )
-}
-
 export class HttpProjectDataSource implements ProjectDataSource {
+  private ensureConfig(): void {
+    if (!import.meta.env.VITE_MICROCMS_ENDPOINT || !import.meta.env.VITE_MICROCMS_API_KEY) {
+      throw new Error(
+        'Missing MicroCMS configuration: VITE_MICROCMS_ENDPOINT and VITE_MICROCMS_API_KEY must be set',
+      )
+    }
+  }
+
   async fetchProjects(): Promise<ProjectsResponseDto> {
-    const res = await fetch(`${ENDPOINT}/projects`, {
-      headers: { 'X-MICROCMS-API-KEY': API_KEY },
+    this.ensureConfig()
+    const res = await fetch(`${import.meta.env.VITE_MICROCMS_ENDPOINT}/projects`, {
+      headers: { 'X-MICROCMS-API-KEY': import.meta.env.VITE_MICROCMS_API_KEY },
     })
     if (!res.ok) throw new Error(`Failed to fetch projects: ${res.status}`)
     return (await res.json()) as ProjectsResponseDto
   }
 
   async fetchProjectById(id: string): Promise<ProjectDto | null> {
-    const res = await fetch(`${ENDPOINT}/projects/${id}`, {
-      headers: { 'X-MICROCMS-API-KEY': API_KEY },
+    this.ensureConfig()
+    const res = await fetch(`${import.meta.env.VITE_MICROCMS_ENDPOINT}/projects/${id}`, {
+      headers: { 'X-MICROCMS-API-KEY': import.meta.env.VITE_MICROCMS_API_KEY },
     })
     if (res.status === 404) return null
     if (!res.ok) throw new Error(`Failed to fetch project: ${res.status}`)
@@ -166,6 +167,8 @@ export class HttpProjectDataSource implements ProjectDataSource {
   }
 }
 ```
+
+The guard is per-fetch, not module-level, so the mock fallback stays alive and a missing-config crash is limited to the projects routes instead of the whole app.
 
 - [ ] **Step 3: Verify type-check + suite**
 

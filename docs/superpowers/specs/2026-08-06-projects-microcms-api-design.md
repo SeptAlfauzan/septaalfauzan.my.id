@@ -53,7 +53,7 @@ Make HTTP the default data source. Close two findings from the final branch revi
 
 `src/modules/projects/data/http-data-source.ts`:
 - Type the JSON responses: `res.json()` → `ProjectsResponseDto` / `ProjectDto`
-- Module-level guard: throw a clear error if `VITE_MICROCMS_ENDPOINT` or `VITE_MICROCMS_API_KEY` is missing (fail fast instead of a confusing `undefined` fetch)
+- Per-fetch guard: throws a clear error when `VITE_MICROCMS_ENDPOINT` or `VITE_MICROCMS_API_KEY` is missing, keeping the mock fallback alive and limiting a misconfiguration to the projects routes (no app-wide crash)
 
 ### 5. Testing & verification
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { ProjectImage } from '@/modules/projects/data/types'
 
 const props = defineProps<{ images: ProjectImage[]; alt: string }>()
@@ -7,6 +7,13 @@ const props = defineProps<{ images: ProjectImage[]; alt: string }>()
 const currentIndex = ref(0)
 
 const currentImage = computed(() => props.images[currentIndex.value])
+
+watch(
+  () => props.images,
+  () => {
+    currentIndex.value = 0
+  },
+)
 
 function next() {
   if (props.images.length === 0) return
