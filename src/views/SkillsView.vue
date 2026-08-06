@@ -7,10 +7,6 @@ const architectureItems = [
 const backendIntegrationItems = [
 'REST API', 'WebSocket', 'Firebase, Micro CMS'
 ];
-const webDevItems = [
-  
-'React.JS', 'Next.JS'
-];
 const toolItems = [
 'Git', 'Jira', 'CI/CD', 'TestFlight', 'Firebase App Distribution',
 ];

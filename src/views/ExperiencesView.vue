@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import ProfilePic from '@/components/ProfilePic.vue';
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
   <main>
     <h2>My Experiences so far</h2>
