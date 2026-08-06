@@ -21,16 +21,22 @@ export const useProjectsStore = defineStore('projects', () => {
     }
   }
 
+  let detailRequestSeq = 0
+
   async function loadProjectDetail(id: string) {
+    const seq = ++detailRequestSeq
     loading.value = true
     error.value = null
     currentProject.value = null
     try {
-      currentProject.value = await getProjectByIdUseCase.execute(id)
+      const project = await getProjectByIdUseCase.execute(id)
+      if (seq !== detailRequestSeq) return
+      currentProject.value = project
     } catch (e) {
+      if (seq !== detailRequestSeq) return
       error.value = e instanceof Error ? e.message : 'Failed to load project'
     } finally {
-      loading.value = false
+      if (seq === detailRequestSeq) loading.value = false
     }
   }
 

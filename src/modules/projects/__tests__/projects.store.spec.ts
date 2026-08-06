@@ -68,4 +68,24 @@ describe('projects store', () => {
     expect(store.currentProject).toBeNull()
     expect(store.error).toBeNull()
   })
+
+  it('keeps the latest requested project when requests resolve out of order', async () => {
+    let resolveFirst!: (p: Project | null) => void
+    let resolveSecond!: (p: Project | null) => void
+    mockedDetail
+      .mockImplementationOnce(() => new Promise<Project | null>((r) => { resolveFirst = r }))
+      .mockImplementationOnce(() => new Promise<Project | null>((r) => { resolveSecond = r }))
+    const store = useProjectsStore()
+
+    const first = store.loadProjectDetail('first')
+    const second = store.loadProjectDetail('second')
+
+    resolveSecond({ ...project, id: 'second' })
+    await second
+    resolveFirst({ ...project, id: 'first' })
+    await first
+
+    expect(store.currentProject?.id).toBe('second')
+    expect(store.loading).toBe(false)
+  })
 })
