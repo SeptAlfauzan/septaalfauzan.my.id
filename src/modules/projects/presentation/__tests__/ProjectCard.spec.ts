@@ -22,11 +22,19 @@ describe('ProjectCard', () => {
     expect(wrapper.find('img').attributes('src')).toBe(project.images[0]?.url)
   })
 
-  it('emits open with the project id on check details click', async () => {
+  it('emits open with the project id on details click', async () => {
     const wrapper = mount(ProjectCard, { props: { project } })
 
     await wrapper.find('button').trigger('click')
 
     expect(wrapper.emitted('open')).toEqual([['p1']])
+  })
+
+  it('renders a placeholder tile when there is no image', () => {
+    const noImage: Project = { ...project, images: [] }
+    const wrapper = mount(ProjectCard, { props: { project: noImage } })
+
+    expect(wrapper.find('img').exists()).toBe(false)
+    expect(wrapper.find('.card-thumb--placeholder').exists()).toBe(true)
   })
 })
