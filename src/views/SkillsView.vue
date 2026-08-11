@@ -1,27 +1,16 @@
 <script setup lang="ts">
-import SkillItem from '@/components/SkillItem.vue';
-const mobileDevItems = ['Flutter', 'Android (Jetpack Compose, SDK)'];
-const architectureItems = [
-  'MVVM', 'Clean Architecture', 'BLoC/Cubit'
-];
-const backendIntegrationItems = [
-'REST API', 'WebSocket', 'Firebase, Micro CMS'
-];
-const toolItems = [
-'Git', 'Jira', 'CI/CD', 'TestFlight', 'Firebase App Distribution',
-];
-
+import { skillGroups } from '@/data/skills'
 </script>
 
 <template>
-  <div
-  style="display: block;">
-  <h2>Skills</h2>
-  
-  <SkillItem title="Mobile Development" :items="mobileDevItems" />
-  <SkillItem title="Architecture" :items="architectureItems" />
-  <SkillItem title="Backend & Integration" :items="backendIntegrationItems" />
-  <SkillItem title="Web Development" :items="mobileDevItems" />
-  <SkillItem title="Tools" :items="toolItems" />
-</div>
+  <section class="panel">
+    <div class="yaml-block">
+      <div v-for="g in skillGroups" :key="g.key" class="yaml-group">
+        <div><span class="yaml-key">{{ g.key }}:</span></div>
+        <div v-for="item in g.items" :key="item">
+          <span class="yaml-dash">&nbsp;&nbsp;-</span> <span class="yaml-val">{{ item }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
