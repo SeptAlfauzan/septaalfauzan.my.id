@@ -18,31 +18,7 @@
   </div>
 
   <div class="terminal-card">
-    <header>Freelance Mobile Developer (Aug 2024 - Present)</header>
-    <div>
-      Delivering end-to-end mobile solutions for multiple clients, from development to deployment.
-      <ul>
-        <li>Built HRIS mobile system covering attendance, payroll, and employee workflows</li>
-        <li>Handled full lifecycle: development, CI/CD pipelines, and Play Store / App Store deployment</li>
-        <li>Reduced manual operations through digitalization of internal business processes</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="terminal-card">
-    <header>Mobile & Frontend Developer — PT Ranajaya (Aug 2024 - Feb 2025)</header>
-    <div>
-      Developed production-ready applications across mobile and web platforms.
-      <ul>
-        <li>Built and deployed Flutter-based math learning platform with real users</li>
-        <li>Developed payment checkout and e-ticketing system using Next.js</li>
-        <li>Integrated frontend with backend payment gateway services</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="terminal-card">
-    <header>Mobile Developer — Tensai Innovation (Oct 2023 - Dec 2024)</header>
+    <header>Mobile Developer — Tensai Innovation (Oct 2023 - Jan 2025)</header>
     <div>
       Worked on diverse real-world systems including IoT, AI, and hardware integrations.
       <ul>
