@@ -18,21 +18,24 @@ const html = computed(() =>
 .markdown-body {
   margin-top: 1.5rem;
   line-height: 1.6;
+  font-size: 13px;
+  color: var(--text);
 }
 
 .markdown-body :deep(h1),
 .markdown-body :deep(h2),
 .markdown-body :deep(h3) {
   margin: 1rem 0 0.5rem;
+  color: var(--text-bright);
 }
 
 .markdown-body :deep(h2) {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 0.25rem;
 }
 
 .markdown-body :deep(a) {
-  color: #1a95e1;
+  color: var(--blue);
 }
 
 .markdown-body :deep(ul),
@@ -41,7 +44,7 @@ const html = computed(() =>
 }
 
 .markdown-body :deep(code) {
-  background: rgba(181, 222, 255, 0.15);
+  background: var(--bg-hover);
   padding: 0.125rem 0.25rem;
 }
 </style>

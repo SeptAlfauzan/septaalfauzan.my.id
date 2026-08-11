@@ -65,6 +65,8 @@ function prev() {
   height: clamp(240px, 45vh, 420px);
   width: 100%;
   object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 10px;
 }
 
 .carousel-btn {
@@ -72,10 +74,23 @@ function prev() {
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 7px;
+  width: 34px;
+  height: 34px;
+}
+
+.carousel-btn:hover {
+  color: var(--text-bright);
+  border-color: var(--blue);
 }
 
 .carousel-counter {
   text-align: center;
   flex: 0 0 auto;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 </style>
