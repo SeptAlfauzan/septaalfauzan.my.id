@@ -19,8 +19,11 @@ function openProject(id: string) {
 </script>
 
 <template>
-  <main>
-    <h2>Projects</h2>
+  <section class="panel">
+    <div class="json-line">
+      <span class="k">"projects"</span>: <span class="tok-punc">[</span>
+      <span class="tok-com">// {{ projects.length }} shipped — click a card for details</span>
+    </div>
     <ProjectGrid
       :projects="projects"
       :loading="loading"
@@ -28,5 +31,5 @@ function openProject(id: string) {
       @open="openProject"
       @retry="store.loadProjects"
     />
-  </main>
+  </section>
 </template>

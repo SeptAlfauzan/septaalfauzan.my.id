@@ -50,6 +50,7 @@ describe('ProjectGrid', () => {
 
     const card = wrapper.findComponent(ProjectCard)
     expect(card.exists()).toBe(true)
+    expect(wrapper.find('.card').exists()).toBe(true)
 
     card.vm.$emit('open', 'p1')
     await wrapper.vm.$nextTick()

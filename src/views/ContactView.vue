@@ -1,30 +1,38 @@
+<script setup lang="ts">
+import CodeBlock from '@/components/shared/CodeBlock.vue'
+import { contact, contactMdLines } from '@/data/contact'
+</script>
+
 <template>
-    <div style="display: block;">
-        <h3>
-            Let’s work together.
-        </h3>
-        <div id="contacts-container">
-            <ul>
-                Email: 
-                <a href="mailto:alfauzansepta@gmail.com">
-                    alfauzansepta@gmail.com  
-                </a>
-            </ul>
-            <ul>
-                Phone: 
-                <a href="tel:+62 821-323-514-998">
-                    +62 821-323-514-998  
-                </a>
-            </ul>
-            <ul>
-                <a href="http://linkedin.com/in/septa-alfauzan-a11a891b0/" target="blank">
-                    LinkedIn
-                </a>
-                | 
-                <a href="http://github.com/septAlfauzan/" target="blank">Github</a>
-                |
-                <a href="https://medium.com/@alfauzansepta" target="blank">Medium</a>
-            </ul>
+  <section class="panel">
+    <div class="split">
+      <div class="code-col">
+        <CodeBlock :lines="contactMdLines()" />
+      </div>
+
+      <div class="preview-card contact-preview">
+        <h3>Let's work together.</h3>
+        <p>Preview — this is how contact.md renders.</p>
+        <div class="contact-row">
+          <span>Email</span>
+          <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>
         </div>
+        <div class="contact-row">
+          <span>Phone</span>
+          <a :href="contact.phoneHref">{{ contact.phone }}</a>
+        </div>
+        <div class="social-row">
+          <a
+            v-for="s in contact.socials"
+            :key="s.label"
+            :href="s.url"
+            target="_blank"
+            rel="noopener"
+          >
+            {{ s.label }}
+          </a>
+        </div>
+      </div>
     </div>
+  </section>
 </template>
