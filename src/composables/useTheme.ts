@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-const isDark = ref(document.documentElement.dataset.theme !== 'light')
+const isDark = ref(document.documentElement.dataset.theme === 'dark')
 
 function apply() {
   document.documentElement.dataset.theme = isDark.value ? 'dark' : 'light'

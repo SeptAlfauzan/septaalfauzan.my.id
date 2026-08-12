@@ -33,11 +33,16 @@ export const profile: Profile = {
 }
 
 const BIO_LINES = [
-  "I'm a mobile developer focused on building",
-  'scalable, production-grade apps using Flutter',
-  "and Android. I don't just write code — I handle",
-  'the full lifecycle: requirements, integration,',
-  'deployment, and post-release stability.',
+    "I'm a mobile developer focused on building",
+    'scalable, production-grade apps using Flutter',
+    "and Android. I don't just write code — I handle",
+    'the full lifecycle: requirements, integration,',
+    'deployment, and post-release stability.',
+    "With 2+ years in mobile development, I build",
+    "production-ready apps used by real users — from",
+    "SIM management platforms to IoT systems and",
+    "enterprise tools. Currently shipping to Play",
+    "Store & App Store for international clients."
 ]
 
 const FOCUS = [
@@ -62,11 +67,7 @@ export function aboutCodeLines(comment: string): CodeLine[] {
     line(plain('    '), str("'Flutter'"), plain(', '), str("'Kotlin'"), plain(', '), str("'Swift'"), plain(', '), str("'Jetpack Compose'"), plain(',')),
     line(plain('  '), plain('];')),
     blank(),
-    line(plain('  '), com('/// With 2+ years in mobile development, I build')),
-    line(plain('  '), com('/// production-ready apps used by real users — from')),
-    line(plain('  '), com('/// SIM management platforms to IoT systems and')),
-    line(plain('  '), com('/// enterprise tools. Currently shipping to Play')),
-    line(plain('  '), com('/// Store & App Store for international clients.')),
+
     line(plain('  '), typ('String'), plain(' '), kw('get'), plain(' '), fn('bio'), plain(' => '), str("'''")),
     ...BIO_LINES.map((b) => line(plain('    '), plain(b))),
     line(plain('  '), str("''';")),
