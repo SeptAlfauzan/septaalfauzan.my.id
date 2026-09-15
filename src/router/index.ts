@@ -5,6 +5,13 @@ import SkillsView from '@/views/SkillsView.vue'
 import ContactView from '@/views/ContactView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
 import ProjectDetailView from '@/views/ProjectDetailView.vue'
+import SakuPrivacyView from '@/views/SakuPrivacyView.vue'
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    standalone?: boolean
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +49,12 @@ const router = createRouter({
       path: '/projects/:id',
       name: 'project-detail',
       component: ProjectDetailView,
+    },
+    {
+      path: '/saku/privacy-policy',
+      name: 'saku-privacy-policy',
+      component: SakuPrivacyView,
+      meta: { standalone: true },
     },
   ],
 })
