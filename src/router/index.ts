@@ -6,6 +6,7 @@ import ContactView from '@/views/ContactView.vue'
 import ProjectsView from '@/views/ProjectsView.vue'
 import ProjectDetailView from '@/views/ProjectDetailView.vue'
 import SakuPrivacyView from '@/views/SakuPrivacyView.vue'
+import MeoTimePrivacyView from '@/views/MeoTimePrivacyView.vue'
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -56,6 +57,13 @@ const router = createRouter({
       component: SakuPrivacyView,
       meta: { standalone: true },
     },
+ {
+      path: '/meotime/privacy-policy',
+      name: 'meotime-privacy-policy',
+      component: MeoTimePrivacyView,
+      meta: { standalone: true },
+    },
+
   ],
 })
 
